@@ -38,7 +38,7 @@ namespace WebApiCICDWorkFlow
 
 
             //create enum type for calculator operations, opertion is body parameter for the post request
-           
+
             app.MapGet("/calculator/{operation}/{a}/{b}", ([FromQuery]Operation operation, float a, float b) =>
             {
                 float result = operation switch
@@ -51,7 +51,7 @@ namespace WebApiCICDWorkFlow
                 };
                 return result;
             }).WithName("WebApiCICDWorkFlow")
-            .WithOpenApi();
+.WithOpenApi();
 
 
 
