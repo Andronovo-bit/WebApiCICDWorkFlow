@@ -9,7 +9,6 @@ env:
   AZURE_WEBAPP_NAME: 'WebApiCICDWorkFlow' # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: './publish_output' # set this to the path to your web app project, defaults to the repository root
 
-
 jobs:
     build:
         runs-on: ubuntu-latest
@@ -31,7 +30,7 @@ jobs:
               run: dotnet test ./WebApiCICDWorkFlow.Tests/WebApiCICDWorkFlow.Tests.csproj --configuration Release --verbosity normal
 
             - name: Publish with dotnet
-              run: dotnet publish ./WebApiCICDWorkFlow.sln --configuration Release --no-build --output ${{env.AZURE_WEBAPP_PACKAGE_PATH}}
+              run: dotnet publish ./WebApiCICDWorkFlow/WebApiCICDWorkFlow.csproj --configuration Release --no-build --output ${{env.AZURE_WEBAPP_PACKAGE_PATH}}
 
             - name: Archive production artifacts
               uses: actions/upload-artifact@v4
