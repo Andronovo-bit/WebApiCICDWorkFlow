@@ -5,7 +5,7 @@
         // This method will return a random number between 1 and 6
         public static int RollDice()
         {
-            Random random = new Random();
+            Random random = new();
             return random.Next(1, 7);
         }
     }

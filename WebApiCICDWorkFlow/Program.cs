@@ -40,7 +40,7 @@ app.MapGet("/calculator/{operation}/{a}/{b}", ([FromQuery] Operation operation, 
 
 app.MapGet("/dice", () =>
 {
-    Random random = new Random();
+    Random random = new();
     return random.Next(1, 7);
 }).WithName("DiceRolling").WithOpenApi();
 
