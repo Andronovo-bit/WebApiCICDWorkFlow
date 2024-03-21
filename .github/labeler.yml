@@ -10,6 +10,6 @@ feature:
  - head-branch: ['^feature', 'feature']
 
 # Add 'Documentation' label to any change to .md files within the entire repository 
-Documentation:
+documentation:
 - changed-files:
   - any-glob-to-any-file: '**/*.md'
