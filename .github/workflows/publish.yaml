@@ -8,6 +8,8 @@ on:
 env:
   AZURE_WEBAPP_NAME: 'WebApiCICDWorkFlow' # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: './publish_output' # set this to the path to your web app project, defaults to the repository root
+  BUILD_CONFIGURATION: 'Release'    # set this to the appropriate build configuration
+  DOTNET_VERSION: '8.x.x' # set this to the dotnet version to use
 
 jobs:
     build:
@@ -18,19 +20,19 @@ jobs:
             - name: Setup .NET Core
               uses: actions/setup-dotnet@v4
               with:
-                dotnet-version: 8.x.x
+                dotnet-version: ${{env.DOTNET_VERSION}}
 
             - name: Restore - Install dependencies
               run: dotnet restore ./WebApiCICDWorkFlow.sln
 
             - name: Build with dotnet
-              run: dotnet build ./WebApiCICDWorkFlow.sln --configuration Release --no-restore
+              run: dotnet build ./WebApiCICDWorkFlow.sln --configuration ${{env.BUILD_CONFIGURATION}} --no-restore
 
             - name: Test with dotnet
-              run: dotnet test ./WebApiCICDWorkFlow.Tests/WebApiCICDWorkFlow.Tests.csproj --configuration Release --verbosity normal
+              run: dotnet test ./WebApiCICDWorkFlow.Tests/WebApiCICDWorkFlow.Tests.csproj --configuration ${{env.BUILD_CONFIGURATION}} --verbosity normal
 
             - name: Publish with dotnet
-              run: dotnet publish ./WebApiCICDWorkFlow/WebApiCICDWorkFlow.csproj --configuration Release --no-build --output ${{env.AZURE_WEBAPP_PACKAGE_PATH}}
+              run: dotnet publish ./WebApiCICDWorkFlow/WebApiCICDWorkFlow.csproj --configuration ${{env.BUILD_CONFIGURATION}} --no-build --output ${{env.AZURE_WEBAPP_PACKAGE_PATH}}
 
             - name: Archive production artifacts
               uses: actions/upload-artifact@v4
