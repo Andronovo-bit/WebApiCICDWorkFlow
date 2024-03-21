@@ -7,7 +7,7 @@ release:
 
 # Add 'feature' label to any PR where the head branch name starts with `feature` or has a `feature` section in the name
 feature:
- - head-branch: ['^feature', 'feature']
+ - head-branch: ['^feature', 'feature','^Feature', 'Feature', 'feature^', 'Feature^']
 
 # Add 'Documentation' label to any change to .md files within the entire repository 
 documentation:

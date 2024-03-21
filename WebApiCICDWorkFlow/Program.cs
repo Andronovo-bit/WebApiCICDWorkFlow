@@ -1,6 +1,8 @@
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
 using System.Text.Json.Serialization;
+using WebApiCICDWorkFlow;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,19 +31,18 @@ app.MapGet("/calculator/{operation}/{a}/{b}", ([FromQuery] Operation operation, 
 {
     float result = operation switch
     {
-        Operation.Add => a + b,
-        Operation.Subtract => a - b,
-        Operation.Multiply => a * b,
-        Operation.Divide => a / b,
+        Operation.Add => Calculator.Add(a, b),
+        Operation.Subtract => Calculator.Subtract(a, b),
+        Operation.Multiply => Calculator.Multiply(a, b),
+        Operation.Divide => Calculator.Divide(a, b),
         _ => 0
     };
-    return result;
+    return Results.Ok(result);
 }).WithName("Calculator").WithOpenApi();
 
 app.MapGet("/dice", () =>
 {
-    Random random = new Random();
-    return random.Next(1, 7);
+    return Results.Ok(DiceRolling.RollDice());
 }).WithName("DiceRolling").WithOpenApi();
 
 await app.RunAsync();
