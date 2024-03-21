@@ -3,8 +3,7 @@ name: Publish
 on:
   workflow_dispatch:
   push:
-    branches: [ master, main ]
-        
+    branches: [ master, main ]  
 
 jobs:
     build:
@@ -24,7 +23,7 @@ jobs:
               run: dotnet build ./WebApiCICDWorkFlow.sln --configuration Release --no-restore
 
             - name: Test with dotnet
-              run: dotnet test ./WebApiCICDWorkFlow.sln --no-build --verbosity normal
+              run: dotnet test ./WebApiCICDWorkFlow.Tests/WebApiCICDWorkFlow.Tests.csproj /p:VsTestUseMSBuildOutput=true --no-build --verbosity normal
 
             - name: Publish with dotnet
               run: dotnet publish ./WebApiCICDWorkFlow.sln --configuration Release --no-build --output ./publish_output
