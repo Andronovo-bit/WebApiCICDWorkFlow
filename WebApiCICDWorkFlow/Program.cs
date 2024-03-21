@@ -36,7 +36,13 @@ app.MapGet("/calculator/{operation}/{a}/{b}", ([FromQuery] Operation operation, 
         _ => 0
     };
     return result;
-}).WithName("WebApiCICDWorkFlow").WithOpenApi();
+}).WithName("Calculator").WithOpenApi();
+
+app.MapGet("/dice", () =>
+{
+    Random random = new Random();
+    return random.Next(1, 7);
+}).WithName("DiceRolling").WithOpenApi();
 
 await app.RunAsync();
 
