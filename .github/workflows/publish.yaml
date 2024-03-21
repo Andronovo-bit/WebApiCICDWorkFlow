@@ -8,7 +8,6 @@ on:
 env:
   AZURE_WEBAPP_NAME: 'WebApiCICDWorkFlow' # set this to your application's name
   AZURE_WEBAPP_PACKAGE_PATH: './publish_output' # set this to the path to your web app project, defaults to the repository root
-  AZURE_WEBAPP_SLOT_NAME: 'production' # (optional) If a slot should be used, set the slot name here
 
 
 jobs:
@@ -44,6 +43,5 @@ jobs:
               uses: azure/webapps-deploy@v3
               with:
                     app-name: ${{ env.AZURE_WEBAPP_NAME }}
-                    slot-name: ${{ env.AZURE_WEBAPP_SLOT_NAME }}
                     publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
                     package: ${{env.AZURE_WEBAPP_PACKAGE_PATH}}

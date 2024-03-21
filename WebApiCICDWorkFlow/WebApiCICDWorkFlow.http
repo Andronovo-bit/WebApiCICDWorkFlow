@@ -1,6 +1,6 @@
 @WebApiCICDWorkFlow_HostAddress = http://localhost:5118
 
-GET {{WebApiCICDWorkFlow_HostAddress}}/weatherforecast/
+GET {{WebApiCICDWorkFlow_HostAddress}}/swagger/
 Accept: application/json
 
 ###
