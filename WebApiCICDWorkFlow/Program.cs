@@ -40,10 +40,7 @@ app.MapGet("/calculator/{operation}/{a}/{b}", ([FromQuery] Operation operation, 
     return Results.Ok(result);
 }).WithName("Calculator").WithOpenApi();
 
-app.MapGet("/dice", () =>
-{
-    return Results.Ok(DiceRolling.RollDice());
-}).WithName("DiceRolling").WithOpenApi();
+app.MapGet("/dice", () => Results.Ok(DiceRolling.RollDice())).WithName("DiceRolling").WithOpenApi();
 
 await app.RunAsync();
 
