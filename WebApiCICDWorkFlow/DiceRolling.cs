@@ -1,12 +1,16 @@
-﻿namespace WebApiCICDWorkFlow
+﻿using System.Security.Cryptography;
+
+namespace WebApiCICDWorkFlow;
+
+public class DiceRolling
 {
-    public class DiceRolling
+    // This method will return a random number between 1 and 6
+    public static int RollDice()
     {
-        // This method will return a random number between 1 and 6
-        public static int RollDice()
-        {
-            Random random = new Random();
-            return random.Next(1, 7);
-        }
+        var randomGenerator = RandomNumberGenerator.Create();
+        byte[] randomNumber = new byte[1];
+        randomGenerator.GetBytes(randomNumber);
+        return (randomNumber[0] % 6) + 1;
+
     }
 }
