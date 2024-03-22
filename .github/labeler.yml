@@ -1,15 +1,27 @@
-﻿ci/cd:
-  - .github/workflows/*
-
-# Add 'release' label to any PR that is opened against the `main` branch
+﻿# Add 'release' label to any PR that is opened against the `main` branch
 release:
  - base-branch: [ master, main ] 
 
 # Add 'feature' label to any PR where the head branch name starts with `feature` or has a `feature` section in the name
 feature:
- - head-branch: ['^feature', 'feature']
+ - head-branch: ['^feature', 'feature','^Feature', 'Feature', 'feature^', 'Feature^', 'feat', 'Feat', '^feat', 'Feat^']
 
 # Add 'Documentation' label to any change to .md files within the entire repository 
-Documentation:
+documentation:
 - changed-files:
-  - any-glob-to-any-file: '**/*.md'
+  - any-glob-to-any-file: ['*.md', 'docs/*']
+
+# Add 'bug' label to any PR that has the word 'bug' in the title
+bug:
+- title: ['bug', 'Bug', 'BUG', 'fix', 'Fix', 'FIX']
+
+# Add CI/CD label to any PR that has the word 'CI' or 'CD' in the title
+ci-cd:
+- changed-files:
+  - any-glob-to-any-file: '**/.github/workflows/*'
+
+# Add 'security' label to any PR that has the word 'security' in the title
+security:
+- title: ['security', 'Security', 'SECURITY', 'secure', 'Secure', 'SECURE']
+
+
