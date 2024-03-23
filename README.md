@@ -1,5 +1,7 @@
 # WebApiCICDWorkFlow
 
+![publish workflow](https://github.com/Andronovo-bit/WebApiCICDWorkFlow/actions/workflows/publish.yaml/badge.svg)
+
 ## About The Project
 
 `WebApiCICDWorkFlow` is a demonstration project built with .NET Core, showcasing the fundamentals of Continuous Integration and Continuous Deployment (CI/CD) for a Web API. This project is ideal for developers looking to understand or implement basic CI/CD practices in their .NET Core applications.
