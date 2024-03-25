@@ -29,7 +29,7 @@ To get a local copy up and running, follow these simple steps.
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/yourusername/WebApiCICDWorkFlow.git
+   git clone https://github.com/Andronovo-bit/WebApiCICDWorkFlow.git
    ```
 2. Navigate to the project directory
    ```sh
